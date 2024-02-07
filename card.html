@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: aqua;
+            color: aqua;
+            font-size: 15px;
+            font-family: 'Courier New', cursive;
+        }
+
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+
+        }
+
+        .sub_main {
+
+            background-color: rgb(66, 56, 56);
+            width: 750px;
+            height: 450px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-radius: 40px;
+            flex-direction: row;
+
+        }
+
+        div:nth-of-type(2) {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input_item {
+            border: none;
+            outline: none;
+            background: none;
+            border-bottom: 1px solid white;
+            color: white;
+            margin: 22px;
+            font-size: 25px;
+            font-family: 'Courier New', cursive;
+            width: 80%;
+
+        }
+
+        .submit_button {
+            background: none;
+            outline: none;
+            border: none;
+            font-size: 18px;
+            font-family: 'Courier New', cursive;
+            margin-left: 25px;
+            color: white;
+
+        }
+
+        .calcy {
+            border-left: 4px solid aqua;
+            padding: 10px;
+        }
+
+        .showdata {
+            /* display:inline-flex;
+            justify-content: flex-end; */
+            flex-wrap: wrap;
+            /* text-align: center; */
+            color: white;
+            font-size: 1.2rem;
+            /* width: 80%; */
+            /* padding-top: -10px;
+    padding-bottom: 10px; */
+        }
+
+        .app_group {
+            margin-bottom: 15px;
+        }
+        .section{
+            width:500px ;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="sub_main">
+
+
+            <div>
+                <h1 class="calcy">Student <br> Grade <br> Calcy</h1>
+            </div>
+            <div>
+                <div class="section">
+                    <input type="text" class="input_item" placeholder="SCIENCE" id="science">
+                </div>
+                <div class="section">
+                    <input type="text" class="input_item" placeholder="COMPUTER" id="computer">
+                </div>
+                <div class="section">
+                    <input type="text" class="input_item" placeholder="PHYSICS" id="physics">
+                </div>
+                <div class="section">
+                    <input type="text" class="input_item" placeholder="MATHS" id="maths">
+                </div>
+                <div class="section">
+                    <input type="button" name="" value="SHOW PERCENTAGES" class="submit_button" onclick="calcy()">
+                </div>
+                <div class="section">
+                    <p class="app_group showdata" id="showData"> </p>
+                </div>
+            </div>
+
+
+            <!-- <div> -->
+
+        </div>
+
+    </div>
+
+
+
+    <script>
+        const calcy = () => {
+            let sc = document.getElementById("science").value;
+            let comp = document.getElementById("computer").value;
+            let phy = document.getElementById("physics").value;
+            let mats = document.getElementById("maths").value;
+            let grades = "";
+
+            let totalGrades = parseFloat(sc) + parseFloat(comp) + parseFloat(phy) + parseFloat(mats);
+            console.log(totalGrades);
+            let perc = (totalGrades / 400) * 100;
+            console.log(perc);
+            if (perc <= 100 && perc >= 80) {
+                grades = 'A';
+            }
+            else if (perc <= 79 && perc >= 60) {
+                grades = 'B';
+            }
+            else if (perc <= 59 && perc >= 40) {
+                grades = 'C';
+            } else {
+                grades = 'F';
+            }
+
+            if (perc >= 39.5) {
+                document.getElementById('showData').innerHTML = ` Out of 400 your total is
+              ${totalGrades} and percentage is ${perc}%. <br> Your grade is ${grades}. You are Pass. `
+            } else {
+                document.getElementById('showData').innerHTML = ` Out of 400 your total is 
+             ${totalGrades} and percentage is ${perc}%. <br> Your grade is ${grades}. You are Fail. `
+            }
+
+        }
+
+
+    </script>
+</body>
+
+</html>
